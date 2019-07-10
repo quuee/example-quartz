@@ -12,6 +12,7 @@ import org.quartz.Scheduler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import tk.mybatis.mapper.entity.Example;
 
 import javax.annotation.PostConstruct;
 import java.util.*;
@@ -67,16 +68,15 @@ public class ScheduleJobServiceImpl extends BaseService<ScheduleJobDao, Schedule
 			this.baseMapper.deleteByPrimaryKey(jobId);
     	}
 
-    	//删除数据
-//    	this.baseMapper.deleteByIds();
 	}
 
 	@Override
     public int updateBatch(Long[] jobIds, int status){
-    	Map<String, Object> map = new HashMap<>();
-    	map.put("list", jobIds);
-    	map.put("status", status);
-    	return baseMapper.updateBatch(map);
+		Example example = new Example(ScheduleJobEntity.class);
+        Example.Criteria criteria = example.createCriteria();
+        criteria.andIn("jobId",Arrays.asList(jobIds));
+        ScheduleJobEntity build = ScheduleJobEntity.builder().status(status).build();
+        return baseMapper.updateByExampleSelective(build,example);
     }
 
 	@Override

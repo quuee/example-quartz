@@ -2,6 +2,8 @@ package com.company.quartz.job.controller;
 
 import com.company.quartz.job.entity.ScheduleJobEntity;
 import com.company.quartz.job.service.ScheduleJobService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +15,7 @@ import java.util.Map;
  * 定时任务
  *
  */
+@Api(description = "定时任务接口，可持久化到数据库",value = "定时任务接口",tags = "定时任务")
 @RestController
 @RequestMapping("/sys/schedule")
 public class ScheduleJobController {
@@ -22,15 +25,17 @@ public class ScheduleJobController {
 	/**
 	 * 定时任务列表
 	 */
+	@ApiOperation(value = "定时任务列表",httpMethod = "GET",response = ResponseEntity.class)
 	@GetMapping("/list")
 	public ResponseEntity list(@RequestParam Map<String, Object> params){
 
-		return null;
+		return new ResponseEntity(HttpStatus.OK);
 	}
 
 	/**
 	 * 定时任务信息
 	 */
+	@ApiOperation(value = "id查询定时任务",httpMethod = "GET",response = ResponseEntity.class)
 	@GetMapping("/info/{jobId}")
 	public ResponseEntity info(@PathVariable("jobId") Long jobId){
 		ScheduleJobEntity schedule = scheduleJobService.queryById(jobId);
@@ -41,6 +46,7 @@ public class ScheduleJobController {
 	/**
 	 * 保存定时任务
 	 */
+	@ApiOperation(value = "保存定时任务",httpMethod = "POST",response = ResponseEntity.class)
 	@PostMapping("/save")
 	public ResponseEntity save(@RequestBody ScheduleJobEntity scheduleJob){
 
@@ -53,7 +59,8 @@ public class ScheduleJobController {
 	/**
 	 * 修改定时任务
 	 */
-	@PostMapping("/update")
+	@ApiOperation(value = "修改定时任务",httpMethod = "PUT",response = ResponseEntity.class)
+	@PutMapping("/update")
 	public ResponseEntity update(@RequestBody ScheduleJobEntity scheduleJob){
 
 		scheduleJobService.update(scheduleJob);
@@ -64,7 +71,8 @@ public class ScheduleJobController {
 	/**
 	 * 删除定时任务
 	 */
-	@PostMapping("/delete")
+	@ApiOperation(value = "删除定时任务",httpMethod = "DELETE",response = ResponseEntity.class)
+	@DeleteMapping("/delete")
 	public ResponseEntity delete(@RequestBody Long[] jobIds){
 		scheduleJobService.deleteBatch(jobIds);
 
@@ -74,7 +82,8 @@ public class ScheduleJobController {
 	/**
 	 * 立即执行任务
 	 */
-	@PostMapping("/run")
+	@ApiOperation(value = "立即执行任务",httpMethod = "POST",response = ResponseEntity.class)
+	@GetMapping("/run")
 	public ResponseEntity run(@RequestBody Long[] jobIds){
 		scheduleJobService.run(jobIds);
 
@@ -84,7 +93,8 @@ public class ScheduleJobController {
 	/**
 	 * 暂停定时任务
 	 */
-	@PostMapping("/pause")
+	@ApiOperation(value = "暂停定时任务",httpMethod = "GET",response = ResponseEntity.class)
+	@GetMapping("/pause")
 	public ResponseEntity pause(@RequestBody Long[] jobIds){
 		scheduleJobService.pause(jobIds);
 
@@ -94,7 +104,8 @@ public class ScheduleJobController {
 	/**
 	 * 恢复定时任务
 	 */
-	@PostMapping("/resume")
+	@ApiOperation(value = "恢复定时任务",httpMethod = "GET",response = ResponseEntity.class)
+	@GetMapping("/resume")
 	public ResponseEntity resume(@RequestBody Long[] jobIds){
 		scheduleJobService.resume(jobIds);
 
