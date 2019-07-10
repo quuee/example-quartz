@@ -1,5 +1,3 @@
-
-
 package com.company.quartz.job.service;
 
 import com.company.quartz.core.BService;

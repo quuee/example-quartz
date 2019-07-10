@@ -21,8 +21,6 @@ import java.util.concurrent.Future;
 /**
  * 定时任务
  *
- * @author Mark sunlightcs@gmail.com
- * @since 1.2.0 2016-11-28
  */
 public class ScheduleJob extends QuartzJobBean {
 	private Logger logger = LoggerFactory.getLogger(getClass());

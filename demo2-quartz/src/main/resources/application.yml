@@ -1,5 +1,9 @@
+server:
+  port: 23333
 
-
+#swagger开关
+swagger:
+  enabled: true
 
 spring:
   datasource:

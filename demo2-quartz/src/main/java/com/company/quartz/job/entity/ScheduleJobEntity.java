@@ -13,8 +13,6 @@ import java.util.Date;
 /**
  * 定时任务
  *
- * @author Mark sunlightcs@gmail.com
- * @since 1.2.0 2016-11-28
  */
 @Table(name="schedule_job")
 @Data

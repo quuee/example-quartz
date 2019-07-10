@@ -1,4 +1,3 @@
-
 package com.company.quartz.job.utils;
 
 import com.company.quartz.job.config.Constant;
@@ -8,8 +7,6 @@ import org.quartz.*;
 /**
  * 定时任务工具类
  *
- * @author Mark sunlightcs@gmail.com
- * @since 1.2.0 2016-11-28
  */
 public class ScheduleUtils {
     private final static String JOB_NAME = "TASK_";
