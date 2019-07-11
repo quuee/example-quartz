@@ -1,4 +1,3 @@
-
 package com.company.quartz.job.service.impl;
 
 import com.company.quartz.core.BaseService;

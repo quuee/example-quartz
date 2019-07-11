@@ -1,4 +1,3 @@
-
 package com.company.quartz.job.config;
 
 import org.springframework.context.annotation.Bean;

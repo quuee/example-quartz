@@ -6,6 +6,13 @@ swagger:
   enabled: true
 
 spring:
+  application:
+    name: demo2-quartz
+  profiles:
+    active: test
+  jackson:
+    time-zone: Asia/Shanghai
+    date-format: yyyy-MM-dd HH:mm:ss
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     driverClassName: com.mysql.jdbc.Driver

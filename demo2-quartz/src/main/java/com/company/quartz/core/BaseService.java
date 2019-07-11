@@ -15,7 +15,7 @@ import java.util.List;
  * @param <M>
  * @param <T>
  */
-public abstract class BaseService<M extends tk.mybatis.mapper.common.BaseMapper<T> & tk.mybatis.mapper.common.ConditionMapper<T> & tk.mybatis.mapper.common.IdsMapper<T> & tk.mybatis.mapper.common.special.InsertListMapper<T> & tk.mybatis.mapper.common.ExampleMapper<T>,T> implements BService<T>{
+public abstract class BaseService<M extends Mapper<T>,T> implements BService<T>{
 
     @Autowired
     protected M baseMapper;
