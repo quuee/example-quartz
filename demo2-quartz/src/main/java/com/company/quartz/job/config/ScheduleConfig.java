@@ -21,6 +21,7 @@ public class ScheduleConfig {
 
         //quartz参数
         Properties prop = new Properties();
+        //注意：如果使用JobStoreTX，实例名严禁使用：DefaultQuartzScheduler
         prop.put("org.quartz.scheduler.instanceName", "DemoScheduler");
         prop.put("org.quartz.scheduler.instanceId", "AUTO");
         //线程池配置
