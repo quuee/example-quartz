@@ -26,19 +26,19 @@ public class ScheduleJobServiceImpl extends BaseService<ScheduleJobDao, Schedule
 	/**
 	 * 项目启动时，初始化定时器
 	 */
-	@PostConstruct
-	public void init(){
-		List<ScheduleJobEntity> scheduleJobList = this.baseMapper.selectAll();
-		for(ScheduleJobEntity scheduleJob : scheduleJobList){
-			CronTrigger cronTrigger = ScheduleUtils.getCronTrigger(scheduler, scheduleJob.getJobId());
-            //如果不存在，则创建
-            if(cronTrigger == null) {
-                ScheduleUtils.createScheduleJob(scheduler, scheduleJob);
-            }else {
-                ScheduleUtils.updateScheduleJob(scheduler, scheduleJob);
-            }
-		}
-	}
+//	@PostConstruct
+//	public void init(){
+//		List<ScheduleJobEntity> scheduleJobList = this.baseMapper.selectAll();
+//		for(ScheduleJobEntity scheduleJob : scheduleJobList){
+//			CronTrigger cronTrigger = ScheduleUtils.getCronTrigger(scheduler, scheduleJob.getJobId());
+//            //如果不存在，则创建
+//            if(cronTrigger == null) {
+//                ScheduleUtils.createScheduleJob(scheduler, scheduleJob);
+//            }else {
+//                ScheduleUtils.updateScheduleJob(scheduler, scheduleJob);
+//            }
+//		}
+//	}
 
 
 

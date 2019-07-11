@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
@@ -31,6 +32,7 @@ public class ScheduleJobEntity implements Serializable {
 	 * 任务id
 	 */
 	@Id
+	@GeneratedValue(generator="JDBC")
 	private Long jobId;
 
 	/**

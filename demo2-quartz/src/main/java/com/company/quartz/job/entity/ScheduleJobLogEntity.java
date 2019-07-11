@@ -4,6 +4,7 @@ package com.company.quartz.job.entity;
 import lombok.Builder;
 import lombok.Data;
 
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
@@ -23,6 +24,7 @@ public class ScheduleJobLogEntity implements Serializable {
 	 * 日志id
 	 */
 	@Id
+	@GeneratedValue(generator="JDBC")
 	private Long logId;
 	
 	/**
