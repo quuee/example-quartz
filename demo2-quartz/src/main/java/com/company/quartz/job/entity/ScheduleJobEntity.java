@@ -1,6 +1,7 @@
 package com.company.quartz.job.entity;
 
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
@@ -17,6 +18,7 @@ import java.util.Date;
 @Table(name="schedule_job")
 @Data
 @Builder
+@AllArgsConstructor
 public class ScheduleJobEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
@@ -69,4 +71,6 @@ public class ScheduleJobEntity implements Serializable {
 	 */
 	private Date createTime;
 
+	public ScheduleJobEntity() {
+	}
 }

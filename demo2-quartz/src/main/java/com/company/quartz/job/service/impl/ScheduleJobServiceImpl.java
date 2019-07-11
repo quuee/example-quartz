@@ -19,6 +19,7 @@ import java.util.*;
 
 @Service("scheduleJobService")
 public class ScheduleJobServiceImpl extends BaseService<ScheduleJobDao, ScheduleJobEntity> implements ScheduleJobService {
+
 	@Autowired
     private Scheduler scheduler;
 

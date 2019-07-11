@@ -4,6 +4,8 @@ package com.company.quartz.job.controller;
 
 import com.company.quartz.job.entity.ScheduleJobLogEntity;
 import com.company.quartz.job.service.ScheduleJobLogService;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -28,9 +31,11 @@ public class ScheduleJobLogController {
 	 */
 	@ApiOperation(value = "定时任务日志列表",httpMethod = "GET",response = ResponseEntity.class)
 	@GetMapping("/list")
-	public ResponseEntity list(@RequestParam Map<String, Object> params){
-
-		return null;
+	public ResponseEntity<PageInfo> list(@RequestParam(defaultValue = "1") int pageNo,@RequestParam(defaultValue = "20") int pageSize){
+		PageHelper.startPage(pageNo,pageSize);
+        List<ScheduleJobLogEntity> query = scheduleJobLogService.query(null);
+        PageInfo<ScheduleJobLogEntity> scheduleJobLogEntityPageInfo = new PageInfo<>(query);
+        return new ResponseEntity<>(scheduleJobLogEntityPageInfo,HttpStatus.OK);
 	}
 
 	/**
@@ -41,6 +46,6 @@ public class ScheduleJobLogController {
 	public ResponseEntity<ScheduleJobLogEntity> info(@PathVariable("logId") Long logId){
 		ScheduleJobLogEntity log = scheduleJobLogService.queryById(logId);
 
-		return new ResponseEntity<ScheduleJobLogEntity>(log, HttpStatus.OK);
+		return new ResponseEntity<>(log, HttpStatus.OK);
 	}
 }
